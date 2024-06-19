@@ -6,4 +6,4 @@
 
 
 ## Notice
-- This extension only work when url match ```https://dev.azure.com/*/*/tags```
+- This extension only work by url match ```https://dev.azure.com/*/*/tags```

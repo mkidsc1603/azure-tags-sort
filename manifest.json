@@ -7,22 +7,22 @@
   "permissions": ["nativeMessaging", "storage", "contextMenus", "tabs"],
   "action": {
     "default_popup": "index.html",
-    "default_icon": "logo128_128.png"
+    "default_icon": "assets/logo128_128.png"
   },
   "icons": {
-    "16": "logo16_16.png",
-    "32": "logo32_32.png",
-    "48": "logo48_48.png",
-    "128": "logo128_128.png"
+    "16": "assets/logo16_16.png",
+    "32": "assets/logo32_32.png",
+    "48": "assets/logo48_48.png",
+    "128": "assets/logo128_128.png"
   },
   "content_scripts": [
     {
-      "js": ["scripts/index.js"],
+      "js": ["scripts/content.js"],
       "matches": ["https://dev.azure.com/*/*/tags"]
     }
   ],
   "background": {
-    "service_worker": "background.js",
+    "service_worker": "scripts/background.js",
     "type": "module"
   }
 }
