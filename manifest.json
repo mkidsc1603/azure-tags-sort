@@ -4,7 +4,7 @@
   "description": "For Azure Repo to sort tags by create date. You can right click and click 'Azure tags sort descending' in context menu.",
   "version": "1.0",
   "host_permissions": ["*://dev.azure.com/"],
-  "permissions": ["nativeMessaging", "storage", "contextMenus", "tabs"],
+  "permissions": ["storage", "contextMenus"],
   "action": {
     "default_popup": "index.html",
     "default_icon": "assets/logo128_128.png"
