@@ -14,3 +14,11 @@ chrome.storage.sync.get(["azureTagSortDesc"], function (res) {
     });
   });
 });
+
+chrome.storage.onChanged.addListener((changes, areaName) => {
+  for (let [key, { oldValue, newValue }] of Object.entries(changes)) {
+    if (key === "azureTagSortDesc") {
+      descCbx.checked = newValue === "true";
+    }
+  }
+});

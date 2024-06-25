@@ -59,7 +59,10 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   if (request.type === "update") {
     refreshByStorage();
   } else if (request.type === "update-by-menu") {
-    sortTags(request.descending);
+    // sortTags(request.descending);
+    chrome.storage.sync.set({
+      azureTagSortDesc: request.descending ? "true" : "false",
+    });
   }
 });
 

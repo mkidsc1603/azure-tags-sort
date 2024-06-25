@@ -1,18 +1,30 @@
-console.log("Background script is running");
-const chromeContext = chrome;
-// context menu
-chrome.contextMenus.create({
-  id: "azure-tags-sort",
-  title: "Azure tags sort descending",
-  contexts: ["all"],
+const menuItems = [
+  {
+    id: "tags-sort-desc",
+    title: "Sort create date desc",
+    payload: { type: "update-by-menu", descending: true },
+  },
+  {
+    id: "tags-sort-asc",
+    title: "Sort create date asc",
+    payload: { type: "update-by-menu", descending: false },
+  },
+];
+
+chrome.runtime.onInstalled.addListener(() => {
+  menuItems.forEach((item) => {
+    chrome.contextMenus.create({
+      id: item.id,
+      title: item.title,
+      contexts: ["all"],
+    });
+  });
 });
 
 // on context menu click
 chrome.contextMenus.onClicked.addListener((info, tab) => {
-  if (info.menuItemId === "azure-tags-sort") {
-    chrome.tabs.sendMessage(tab.id, {
-      type: "update-by-menu",
-      descending: true,
-    });
+  const item = menuItems.find((x) => x.id === info.menuItemId);
+  if (item) {
+    chrome.tabs.sendMessage(tab.id, { ...item.payload });
   }
 });
