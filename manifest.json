@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Azure Tags Sorter",
   "description": "For Azure Repo to sort tags by create date. You can right click and click 'Azure tags sort descending' in context menu.",
-  "version": "1.1",
+  "version": "1.2",
   "host_permissions": ["*://dev.azure.com/"],
   "permissions": ["storage", "contextMenus"],
   "action": {
@@ -18,7 +18,7 @@
   "content_scripts": [
     {
       "js": ["scripts/content.js"],
-      "matches": ["https://dev.azure.com/*/*/tags"]
+      "matches": ["https://dev.azure.com/*"]
     }
   ],
   "background": {

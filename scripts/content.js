@@ -59,7 +59,6 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   if (request.type === "update") {
     refreshByStorage();
   } else if (request.type === "update-by-menu") {
-    // sortTags(request.descending);
     chrome.storage.sync.set({
       azureTagSortDesc: request.descending ? "true" : "false",
     });
@@ -72,7 +71,10 @@ chrome.storage.onChanged.addListener((changes, namespace) => {
       `Storage key "${key}" in namespace "${namespace}" changed. Old value was "${oldValue}", new value is "${newValue}".`
     );
     if (key === "azureTagSortDesc") {
-      sortTags(newValue === "true");
+      // Azure is SPA, make sure is repo tags page
+      if (location.href.indexOf("tags") === location.href.length - 4) {
+        sortTags(newValue === "true");
+      }
     }
   }
 });
